@@ -1,0 +1,57 @@
+{
+  "/Users/govind.kumar/s3-bucket-serverless/serverless.yml": {
+    "versionFramework": "4.6.2",
+    "servicePath": "/Users/govind.kumar/s3-bucket-serverless/serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "s3-bucket-service",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "region": "us-east-1"
+      },
+      "resources": {
+        "Resources": {
+          "MyS3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketName": "my-serverless-cicd-bucket-12345",
+              "VersioningConfiguration": {
+                "Status": "Enabled"
+              }
+            }
+          }
+        }
+      },
+      "licenseKey": "${ssm:/serverless-framework/license-key}"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs18.x",
+      "region": "us-east-1"
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": true,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "serviceRawFile": "service: s3-bucket-service\n\nprovider:\n  name: aws\n  runtime: nodejs18.x\n  region: us-east-1\n\nresources:\n  Resources:\n    MyS3Bucket:\n      Type: AWS::S3::Bucket\n      Properties:\n        BucketName: my-serverless-cicd-bucket-12345\n        VersioningConfiguration:\n          Status: Enabled\n\n",
+    "command": [
+      "login"
+    ],
+    "options": {},
+    "orgId": "8e7518c4-7350-47da-a4ae-cafab4e47fa4",
+    "orgName": "govin87",
+    "userId": "wHD6PX5Q0PkHwGlYrH",
+    "userName": "govin87",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}

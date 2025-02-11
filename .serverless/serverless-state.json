@@ -1,0 +1,77 @@
+{
+  "service": {
+    "service": "s3-bucket-service",
+    "serviceObject": {
+      "name": "s3-bucket-service"
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs18.x",
+      "region": "us-east-1",
+      "stage": "dev",
+      "versionFunctions": true,
+      "compiledCloudFormationTemplate": {
+        "AWSTemplateFormatVersion": "2010-09-09",
+        "Description": "The AWS CloudFormation template for this Serverless application",
+        "Resources": {
+          "MyS3Bucket": {
+            "Type": "AWS::S3::Bucket",
+            "Properties": {
+              "BucketName": "my-serverless-cicd-bucket-12345",
+              "VersioningConfiguration": {
+                "Status": "Enabled"
+              }
+            }
+          }
+        },
+        "Outputs": {
+          "ServerlessDeploymentBucketName": {
+            "Value": "serverless-framework-deployments-us-east-1-61cd7b8b-8145",
+            "Export": {
+              "Name": "sls-s3-bucket-service-dev-ServerlessDeploymentBucketName"
+            }
+          }
+        }
+      }
+    },
+    "pluginsData": {},
+    "functions": {},
+    "resources": {
+      "Resources": {
+        "MyS3Bucket": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "BucketName": "my-serverless-cicd-bucket-12345",
+            "VersioningConfiguration": {
+              "Status": "Enabled"
+            }
+          }
+        }
+      },
+      "Outputs": {}
+    },
+    "configValidationMode": "warn",
+    "serviceFilename": "serverless",
+    "initialServerlessConfig": {
+      "dashboard": false,
+      "service": "s3-bucket-service",
+      "provider": {
+        "$ref": "$[\"service\"][\"provider\"]"
+      },
+      "resources": {
+        "$ref": "$[\"service\"][\"resources\"]"
+      },
+      "org": null,
+      "app": null
+    },
+    "app": null,
+    "appId": null,
+    "org": null,
+    "orgId": null,
+    "layers": {}
+  },
+  "package": {
+    "artifactDirectoryName": "serverless/s3-bucket-service/dev/1739255082418-2025-02-11T06:24:42.418Z",
+    "artifact": ""
+  }
+}

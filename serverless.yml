@@ -1,0 +1,20 @@
+service: serverless-aws-project
+
+frameworkVersion: '4'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+resources:
+  Resources:
+    MyS3Bucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: s3-serverles
+
+# Serverless Dashboard (License Key Integration)
+org: govin87
+app: aws-app
+
