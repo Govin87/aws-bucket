@@ -12,9 +12,14 @@ resources:
     MyS3Bucket:
       Type: AWS::S3::Bucket
       Properties:
+<<<<<<< HEAD
         BucketName: s3-serverles
 
 # Serverless Dashboard (License Key Integration)
+=======
+        BucketName: s3-serverless-test
+#Serverless Dashboard (License Key Integration)
+>>>>>>> 298c519 (bucket name)
 org: govin87
 app: aws-app
 
