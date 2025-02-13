@@ -12,7 +12,7 @@ resources:
     MyS3Bucket:
       Type: AWS::S3::Bucket
       Properties:
-        BucketName: s3-serverles
+        BucketName: s3-serverless
 
 org: govin87
 app: aws-app
