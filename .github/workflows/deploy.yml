@@ -8,7 +8,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+   
+    permissions:
+      id-token: write   # Required for OIDC
+      contents: read    # To access repo contents
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -24,11 +28,15 @@ jobs:
       - name: Install Serverless Framework
         run: npm install -g serverless@4
 
+      - name: Configure AWS Credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::664418970006:role/GitHubOIDCRole 
+          aws-region: us-east-1
+
       - name: Deploy to AWS
         env:
           SERVERLESS_ACCESS_KEY: ${{ secrets.SERVERLESS_ACCESS_KEY }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           export SERVERLESS_ACCESS_KEY=${{ secrets.SERVERLESS_ACCESS_KEY }}
           npx serverless deploy --verbose
